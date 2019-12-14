@@ -63,7 +63,7 @@ tracks/0/keys = {
 "values": [ Vector2( 2, 2 ), Vector2( 2.2, 2.2 ), Vector2( 2, 2 ) ]
 }
 
-[node name="TurretEnemy" index="0" instance=ExtResource( 1 )]
+[node name="TurretEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 projectile_scene = ExtResource( 4 )
 
