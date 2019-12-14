@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Tileset/DungeonTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Debug/DebugPanel.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemies/BaseEnemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/PatrollingEnemy/PatrollingEnemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/Health/HeartContainer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/Turret/TurretEnemy.tscn" type="PackedScene" id=6]
 
 [node name="DungeonScene" type="Node2D"]
 
@@ -21,7 +22,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/DebugDock"]
 margin_right = 290.0
-margin_bottom = 102.0
+margin_bottom = 208.0
 
 [node name="DebugPanel2" parent="UI/DebugDock/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
@@ -29,6 +30,15 @@ anchor_bottom = 0.0
 margin_right = 290.0
 margin_bottom = 102.0
 reference_path = NodePath("../../../../Player/StateMachine")
+properties = PoolStringArray( "_state_name" )
+
+[node name="DebugPanel3" parent="UI/DebugDock/VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 106.0
+margin_right = 290.0
+margin_bottom = 208.0
+reference_path = NodePath("../../../../Player/AttackStateMachine")
 properties = PoolStringArray( "_state_name" )
 
 [node name="HeartContainer" parent="UI" instance=ExtResource( 5 )]
@@ -54,12 +64,21 @@ position = Vector2( 71.3549, 189.717 )
 [node name="JumpDuration" parent="Player/StateMachine/Move/Air" index="0"]
 wait_time = 0.3
 
+[node name="AttackStateMachine" parent="Player" index="7"]
+initial_state = NodePath("Attack/Idle")
+
 [node name="Health" parent="Player" index="9"]
 heart_container_reference_path = NodePath("../../UI/HeartContainer")
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="BaseEnemy" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 584.335, 384.325 )
+[node name="PatrollingEnemy" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 598.122, 380.311 )
+
+[node name="PatrollingEnemy2" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 581.371, 267.376 )
+
+[node name="TurretEnemy" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 524.697, 199.023 )
 
 [editable path="Player"]

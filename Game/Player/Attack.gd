@@ -16,5 +16,4 @@ func _get_configuration_warning() -> String:
 		return "Item Reference Path should not be empty."
 
 func unhandled_input(event: InputEvent) -> void:
-	if can_attack and event.is_action_pressed("attack"): 
-		Events.emit_signal("player_attacked", owner)
+	pass

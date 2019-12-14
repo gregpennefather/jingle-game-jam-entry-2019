@@ -41,19 +41,23 @@ func play_run_animation():
 			$Sword/AnimationPlayer.play("run")
 
 func play_die():
-	print('die animation')
 	$Frame/AnimationPlayer.play("die")
 		
 func play_hit_animation():
-	print('hit animation')
 	$Frame/AnimationPlayer.play("hit")
 		
 func play_attack_animation():
 	if HasSword:
 		$Sword/AnimationPlayer.play("swing")
 
-func _on_Sword_AnimationPlayer_animation_finished(anim_name: String) -> void:
+func _on_Sword_AnimationPlayer_animation_finished(anim_name) -> void:
+	if anim_name == "swing":
+		Events.emit_signal("player_attack_ended")
 	$Sword/AnimationPlayer.play("idle")
 
 func _on_SwingArea_body_entered(body):
 	Events.emit_signal("enemy_hit", body)
+
+func _on_AnimationPlayer_animation_changed(old_name, new_name):
+	if old_name == "swing":
+		Events.emit_signal("player_attack_ended")

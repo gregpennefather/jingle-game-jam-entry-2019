@@ -6,6 +6,7 @@ onready var collider: CollisionShape2D = $CollisionShape2D
 onready var body := $Body
 onready var health := $Health
 onready var camera_rig := $CameraRig
+onready var attack_state_machine := $AttackStateMachine
 
 const FLOOR_NORMAL := Vector2.UP
 
@@ -24,7 +25,8 @@ func is_on_ground() -> bool:
 	return $FloorDetectorLeft.is_colliding() or $FloorDetectorCenter.is_colliding() or $FloorDetectorRight.is_colliding()
 
 static func _on_Player_moved(player: Player, direction: Vector2) -> void:
-	player.body.Facing = sign(direction.x)
+	if player.attack_state_machine.state.name == "Idle":
+		player.body.Facing = sign(direction.x)
 	player.body.play_run_animation()
 	
 static func _on_Player_attacked(player: Player) -> void:

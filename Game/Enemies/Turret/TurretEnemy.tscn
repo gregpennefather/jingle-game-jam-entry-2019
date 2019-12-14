@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/0x72_16x16DungeonTileset.v4.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Turret/TurretEnemy.gd" type="Script" id=3]
+[ext_resource path="res://Enemies/Turret/TurretProjectile.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 11.5
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 18.9769
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 200.0
+
+[sub_resource type="Animation" id=5]
+resource_name = "attack"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 359.0, 180.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 0.1, 0.1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 2.2, 2.2 ), Vector2( 2, 2 ) ]
+}
+
+[node name="TurretEnemy" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+projectile_scene = ExtResource( 4 )
+
+[node name="CollisionShape2D" parent="CollisionArea" index="0"]
+position = Vector2( 0.142395, 1.28156 )
+shape = SubResource( 1 )
+
+[node name="DespawnTimer" parent="." index="2"]
+wait_time = 1.0
+
+[node name="Sprite" type="Sprite" parent="." index="3"]
+rotation = 6.26573
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 160, 176, 32, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+position = Vector2( 1.59128, 4.14844 )
+shape = SubResource( 2 )
+
+[node name="AggroArea" type="Area2D" parent="." index="5"]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea" index="0"]
+shape = SubResource( 3 )
+
+[node name="FirePosition" type="Position2D" parent="." index="6"]
+position = Vector2( -16.6591, 0 )
+
+[node name="AttackRechargeTimer" type="Timer" parent="." index="7"]
+wait_time = 5.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+autoplay = "idle"
+anims/attack = SubResource( 5 )
+anims/die = SubResource( 6 )
+anims/idle = SubResource( 4 )
+[connection signal="body_entered" from="AggroArea" to="." method="_on_AggroArea_body_entered"]
+[connection signal="body_exited" from="AggroArea" to="." method="_on_AggroArea_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
