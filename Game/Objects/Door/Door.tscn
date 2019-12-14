@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/Door/Door.gd" type="Script" id=1]
+[ext_resource path="res://Assets/0x72_16x16DungeonTileset_walls.v2.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.973, 33.3814 )
+
+[node name="Door" type="StaticBody2D"]
+script = ExtResource( 1 )
+Open = false
+
+[node name="DoorClosed" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+z_index = -1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 112, 16, 32, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 16.1767, -0.32354 )
+shape = SubResource( 1 )
+
+[node name="DoorOpen" type="Node2D" parent="."]
+visible = false
+
+[node name="LeftSide" type="Sprite" parent="DoorOpen"]
+position = Vector2( -16, 0 )
+scale = Vector2( 2, 2 )
+z_index = -1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 176, 16, 16, 32 )
+
+[node name="RightSide" type="Sprite" parent="DoorOpen"]
+position = Vector2( 16, 0 )
+scale = Vector2( 2, 2 )
+z_index = 1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 192, 16, 16, 32 )
