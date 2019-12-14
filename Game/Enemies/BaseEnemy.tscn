@@ -76,6 +76,11 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
 shape = SubResource( 1 )
 
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( 0.299782, 4.94637 )
+process_parent = true
+physics_process_parent = true
+
 [node name="FloorAheadRay" type="RayCast2D" parent="."]
 position = Vector2( -10.3424, -0.749451 )
 enabled = true

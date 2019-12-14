@@ -11,9 +11,11 @@ var gravity := 100
 onready var animation_player := get_node("AnimationPlayer")
 
 func _ready() -> void:
+	set_physics_process(false)
 	Events.connect("enemy_hit", self, "_on_hit_by_player")
 	
 func _physics_process(delta):
+	print('enemy active')
 	if alive:
 		if is_on_wall() or not $FloorAheadRay.is_colliding():
 			change_facing()
