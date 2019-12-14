@@ -34,19 +34,21 @@ func set_facing(value: int) -> void:
 		scale.x = abs(scale.x) * -1
 		
 func play_run_animation():
-	$Frame/AnimationPlayer.play("run")
+	if $Frame/AnimationPlayer.current_animation != "hit":
+		$Frame/AnimationPlayer.play("run")
 	if HasSword:
 		if $Sword/AnimationPlayer.current_animation == "run" or $Sword/AnimationPlayer.current_animation == "idle":
 			$Sword/AnimationPlayer.play("run")
+			
+func play_hit_animation():
+	$Frame/AnimationPlayer.play("hit")
 		
 func play_attack_animation():
 	if HasSword:
 		$Sword/AnimationPlayer.play("swing")
 
-
 func _on_Sword_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	if anim_name == "swing":
-		$Sword/AnimationPlayer.play("idle")
+	$Sword/AnimationPlayer.play("idle")
 
 
 func _on_SwingArea_body_entered(body):

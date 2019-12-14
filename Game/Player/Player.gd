@@ -10,6 +10,7 @@ const FLOOR_NORMAL := Vector2.UP
 func _ready():
 	Events.connect("player_moved", self, "_on_Player_moved")
 	Events.connect("player_attacked", self, "_on_Player_attacked")
+	Events.connect("player_hit", self, "_on_Player_hit")
 	update_body()
 
 func update_body():
@@ -25,3 +26,7 @@ static func _on_Player_moved(player: Player, direction: Vector2) -> void:
 	
 static func _on_Player_attacked(player: Player) -> void:
 	player.body.play_attack_animation()
+
+static func _on_Player_hit(player: Player) -> void:
+	print('hit')
+	player.body.play_hit_animation()
