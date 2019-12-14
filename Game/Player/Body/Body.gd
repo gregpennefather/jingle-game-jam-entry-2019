@@ -34,13 +34,18 @@ func set_facing(value: int) -> void:
 		scale.x = abs(scale.x) * -1
 		
 func play_run_animation():
-	if $Frame/AnimationPlayer.current_animation != "hit":
+	if $Frame/AnimationPlayer.current_animation == "idle" or $Frame/AnimationPlayer.current_animation == "run":
 		$Frame/AnimationPlayer.play("run")
 	if HasSword:
 		if $Sword/AnimationPlayer.current_animation == "run" or $Sword/AnimationPlayer.current_animation == "idle":
 			$Sword/AnimationPlayer.play("run")
-			
+
+func play_die():
+	print('die animation')
+	$Frame/AnimationPlayer.play("die")
+		
 func play_hit_animation():
+	print('hit animation')
 	$Frame/AnimationPlayer.play("hit")
 		
 func play_attack_animation():
@@ -49,7 +54,6 @@ func play_attack_animation():
 
 func _on_Sword_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	$Sword/AnimationPlayer.play("idle")
-
 
 func _on_SwingArea_body_entered(body):
 	Events.emit_signal("enemy_hit", body)

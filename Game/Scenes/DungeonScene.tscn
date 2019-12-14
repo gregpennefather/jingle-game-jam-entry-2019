@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Tileset/DungeonTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Debug/DebugPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/BaseEnemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/Health/HeartContainer.tscn" type="PackedScene" id=5]
 
 [node name="DungeonScene" type="Node2D"]
 
@@ -20,7 +21,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/DebugDock"]
 margin_right = 290.0
-margin_bottom = 416.0
+margin_bottom = 522.0
 
 [node name="DebugPanel" parent="UI/DebugDock/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
@@ -48,6 +49,24 @@ margin_bottom = 416.0
 reference_path = NodePath("../../../../Player/StateMachine/Move/Air")
 properties = PoolStringArray( "early_jump_active", "can_air_jump", "jump_active", "air_jump_used" )
 
+[node name="DebugPanel4" parent="UI/DebugDock/VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 420.0
+margin_right = 290.0
+margin_bottom = 522.0
+reference_path = NodePath("../../../../Player/Health")
+properties = PoolStringArray( "player_max_health", "player_current_health" )
+
+[node name="HeartContainer" parent="UI" instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_bottom = 0.0
+margin_left = -136.0
+margin_right = 0.0
+margin_bottom = 56.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
@@ -61,6 +80,9 @@ position = Vector2( 80.2333, -44.588 )
 
 [node name="JumpDuration" parent="Player/StateMachine/Move/Air" index="0"]
 wait_time = 0.3
+
+[node name="Health" parent="Player" index="9"]
+heart_container_reference_path = NodePath("../../UI/HeartContainer")
 
 [node name="Enemies" type="Node" parent="."]
 

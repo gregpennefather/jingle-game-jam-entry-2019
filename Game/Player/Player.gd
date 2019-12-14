@@ -4,6 +4,8 @@ class_name Player
 onready var state_machine: StateMachine = $StateMachine
 onready var collider: CollisionShape2D = $CollisionShape2D
 onready var body := $Body
+onready var health := $Health
+onready var camera_rig := $CameraRig
 
 const FLOOR_NORMAL := Vector2.UP
 
@@ -11,6 +13,7 @@ func _ready():
 	Events.connect("player_moved", self, "_on_Player_moved")
 	Events.connect("player_attacked", self, "_on_Player_attacked")
 	Events.connect("player_hit", self, "_on_Player_hit")
+	Events.connect("player_died", self, "_on_Player_died")
 	update_body()
 
 func update_body():
@@ -28,5 +31,8 @@ static func _on_Player_attacked(player: Player) -> void:
 	player.body.play_attack_animation()
 
 static func _on_Player_hit(player: Player) -> void:
-	print('hit')
 	player.body.play_hit_animation()
+	player.health.take_damage(1)
+
+static func _on_Player_died(player: Player) -> void:
+	player.state_machine.transition_to("Die")
