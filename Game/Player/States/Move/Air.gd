@@ -12,10 +12,14 @@ var holding_last_jump: bool = false
 var air_jump_used: bool = false
 var can_air_jump: bool
 
-
 onready var item_reference: Node = get_node(item_reference_path)
 
 export var item_reference_path: NodePath
+
+var early_jump_active : bool setget ,get_early_jump_active
+
+func get_early_jump_active() -> bool:
+	return not $EarlyJumpTimer.is_stopped()
 
 onready var move:= get_parent()
 
@@ -27,8 +31,12 @@ func unhandled_input(event: InputEvent) -> void:
 		holding_last_jump = false
 	if not holding_last_jump and jump_active:
 		exit_jump()
-	if Input.is_action_pressed("jump") and not holding_last_jump and not air_jump_used and can_air_jump:
-		enter_jump(air_jump_impulse, true)
+	if Input.is_action_pressed("jump") and not holding_last_jump:
+		if not air_jump_used and can_air_jump:
+			enter_jump(air_jump_impulse, true)
+		elif not owner.is_on_ground():
+			$EarlyJumpTimer.start()
+		
 	move.unhandled_input(event)
 
 func physics_process(delta: float) -> void:
@@ -39,7 +47,10 @@ func physics_process(delta: float) -> void:
 	Events.emit_signal("player_moved", owner, move.get_move_direction())
 	
 	if owner.is_on_ground() and not just_jumped:
-		if move.get_move_direction().x == 0:
+		if self.early_jump_active:
+			early_jump()
+			return
+		elif move.get_move_direction().x == 0:
 			_state_machine.transition_to("Move/Idle")
 		else:
 			_state_machine.transition_to("Move/Run")
@@ -58,6 +69,11 @@ func enter(msg: Dictionary = {}) -> void:
 		move.clear_early_jump()
 	if "jump" in msg:
 		enter_jump(jump_impulse)
+		
+func early_jump():
+	$EarlyJumpTimer.stop()
+	move.velocity.y = 0
+	enter_jump(jump_impulse)
 
 func enter_jump(impulse: float, is_air_jump := false) -> void:
 	jump_active = true

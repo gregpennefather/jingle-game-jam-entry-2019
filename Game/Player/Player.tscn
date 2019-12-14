@@ -78,9 +78,11 @@ item_reference_path = NodePath("../../../Items/Wings")
 wait_time = 0.5
 one_shot = true
 
-[node name="EarlyJumpTimer" type="Timer" parent="StateMachine/Move"]
-wait_time = 0.25
+[node name="EarlyJumpTimer" type="Timer" parent="StateMachine/Move/Air"]
+wait_time = 0.5
 one_shot = true
+
+[node name="Attack" type="Node" parent="StateMachine/Move"]
 
 [node name="CameraRig" parent="." instance=ExtResource( 8 )]
 [connection signal="timeout" from="StateMachine/Move/Air/JumpDuration" to="StateMachine/Move/Air" method="_on_JumpDuration_timeout"]
