@@ -31,8 +31,9 @@ static func _on_Player_attacked(player: Player) -> void:
 	player.body.play_attack_animation()
 
 static func _on_Player_hit(player: Player) -> void:
-	player.body.play_hit_animation()
-	player.health.take_damage(1)
+	if player.state_machine._state_name != "Die":
+		player.body.play_hit_animation()
+		player.health.take_damage(1)
 
 static func _on_Player_died(player: Player) -> void:
 	player.state_machine.transition_to("Die")

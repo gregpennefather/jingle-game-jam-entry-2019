@@ -75,5 +75,10 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
 shape = SubResource( 1 )
+
+[node name="FloorAheadRay" type="RayCast2D" parent="."]
+position = Vector2( -10.3424, -0.749451 )
+enabled = true
+collision_mask = 2
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_CollisionArea_body_entered"]

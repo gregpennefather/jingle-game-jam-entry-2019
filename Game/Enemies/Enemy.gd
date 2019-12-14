@@ -1,12 +1,27 @@
 extends KinematicBody2D
 class_name Enemy
+const FLOOR_NORMAL := Vector2.UP
+
+export (float) var SPEED = 5000
 
 var alive: bool = true
+var velocity = Vector2(-SPEED, 10)
+var gravity := 100
 
 onready var animation_player := get_node("AnimationPlayer")
 
 func _ready() -> void:
 	Events.connect("enemy_hit", self, "_on_hit_by_player")
+	
+func _physics_process(delta):
+	if alive:
+		if is_on_wall() or not $FloorAheadRay.is_colliding():
+			change_facing()
+		velocity.y = move_and_slide(velocity * delta, FLOOR_NORMAL).y
+	
+func change_facing() -> void:
+	velocity.x *= -1
+	scale.x *= -1
 
 static func _on_hit_by_player(enemy) -> void:
 	enemy.alive = false
