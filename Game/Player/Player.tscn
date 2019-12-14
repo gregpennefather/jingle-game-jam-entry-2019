@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Body/Body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/States/StateMachine.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Player/Player.gd" type="Script" id=7]
 [ext_resource path="res://Player/Camera/CameraRig.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/States/Move/Idle.gd" type="Script" id=9]
+[ext_resource path="res://Player/Items/Sword.gd" type="Script" id=10]
+[ext_resource path="res://Player/Wings.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 16 )
@@ -42,6 +44,14 @@ enabled = true
 cast_to = Vector2( 0, 11 )
 collision_mask = 2
 
+[node name="Items" type="Node" parent="."]
+
+[node name="Sword" type="Node" parent="Items"]
+script = ExtResource( 10 )
+
+[node name="Wings" type="Node" parent="Items"]
+script = ExtResource( 11 )
+
 [node name="StateMachine" parent="." instance=ExtResource( 2 )]
 initial_state = NodePath("Move/Idle")
 
@@ -49,8 +59,6 @@ initial_state = NodePath("Move/Idle")
 script = ExtResource( 4 )
 max_speed_default = Vector2( 225, 400 )
 acceleration_default = Vector2( 500, 1200 )
-jump_impulse = 350.0
-air_jump_impulse = 250.0
 max_jump_speed = 600
 
 [node name="Idle" parent="StateMachine/Move" instance=ExtResource( 3 )]
@@ -64,7 +72,7 @@ script = ExtResource( 6 )
 acceleration_x = 400.0
 fall_acceleration = 850.0
 extended_jump_impulse_factor = 0.6
-can_air_jump = false
+item_reference_path = NodePath("../../../Items/Wings")
 
 [node name="JumpDuration" type="Timer" parent="StateMachine/Move/Air"]
 wait_time = 0.5

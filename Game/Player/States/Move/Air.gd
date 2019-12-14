@@ -3,14 +3,24 @@ extends State
 export var acceleration_x: = 5000.0
 export var fall_acceleration = 200.0
 export var extended_jump_impulse_factor := 0.75
-export (bool) var can_air_jump = true
+export var jump_impulse := 350.0
+export var air_jump_impulse := 300.0
 
 var jump_active: bool = false
 var just_jumped: bool = false
 var holding_last_jump: bool = false
 var air_jump_used: bool = false
+var can_air_jump: bool
+
+
+onready var item_reference: Node = get_node(item_reference_path)
+
+export var item_reference_path: NodePath
 
 onready var move:= get_parent()
+
+func _ready():
+	can_air_jump = item_reference.active
 
 func unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_released("jump"):
@@ -18,12 +28,12 @@ func unhandled_input(event: InputEvent) -> void:
 	if not holding_last_jump and jump_active:
 		exit_jump()
 	if Input.is_action_pressed("jump") and not holding_last_jump and not air_jump_used and can_air_jump:
-		enter_jump(move.air_jump_impulse, true)
+		enter_jump(air_jump_impulse, true)
 	move.unhandled_input(event)
 
 func physics_process(delta: float) -> void:
 	if not owner.is_on_ground() and jump_active:
-		move.velocity = move.calculate_velocity(move.velocity, move.max_speed, move.max_jump_speed, move.max_fall_speed, Vector2(0, move.jump_impulse) * extended_jump_impulse_factor, delta, Vector2.UP)
+		move.velocity = move.calculate_velocity(move.velocity, move.max_speed, move.max_jump_speed, move.max_fall_speed, Vector2(0, jump_impulse) * extended_jump_impulse_factor, delta, Vector2.UP)
 		
 	move.physics_process(delta)
 	Events.emit_signal("player_moved", owner, move.get_move_direction())
@@ -46,8 +56,8 @@ func enter(msg: Dictionary = {}) -> void:
 	if "early_jump" in msg:
 		move.velocity.y = 0
 		move.clear_early_jump()
-	if "impulse" in msg:
-		enter_jump(msg.impulse)
+	if "jump" in msg:
+		enter_jump(jump_impulse)
 
 func enter_jump(impulse: float, is_air_jump := false) -> void:
 	jump_active = true
@@ -92,3 +102,9 @@ func calculate_jump_velocity(impulse := 0.0, include_x_acceleration := false) ->
 
 func _on_JumpDuration_timeout():
 	exit_jump()
+
+func _get_configuration_warning() -> String:
+	if not item_reference_path.is_empty():
+		return ""
+	else:
+		return "Item Reference Path should not be empty."

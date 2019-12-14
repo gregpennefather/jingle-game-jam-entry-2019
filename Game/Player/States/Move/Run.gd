@@ -7,7 +7,7 @@ func unhandled_input(event: InputEvent) -> void:
 
 func physics_process(delta: float) -> void:
 	if move.early_jump_active:
-		_state_machine.transition_to("Move/Air", { impulse = move.jump_impulse, early_jump = true })
+		_state_machine.transition_to("Move/Air", { jump = true, early_jump = true })
 	elif owner.is_on_ground():
 		if move.get_move_direction().x == 0.0:
 			_state_machine.transition_to("Move/Idle")

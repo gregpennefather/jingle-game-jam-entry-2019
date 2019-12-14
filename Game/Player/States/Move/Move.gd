@@ -1,9 +1,7 @@
 extends State
 
-export var max_speed_default := Vector2(300.0, 400.0)
+export var max_speed_default := Vector2(300.0, 500.0)
 export var acceleration_default := Vector2(1000.0, 1000.0)
-export var jump_impulse := 200.0
-export var air_jump_impulse := 200.0
 export var max_jump_speed := 800
 export var max_fall_speed := 400
 
@@ -19,7 +17,7 @@ func get_early_jump_active() -> bool:
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		if owner.is_on_ground(): 
-			_state_machine.transition_to("Move/Air", { impulse = jump_impulse })
+			_state_machine.transition_to("Move/Air", { jump = true })
 		else:
 			$EarlyJumpTimer.start()
 
