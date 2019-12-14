@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/0x72_16x16DungeonTileset.v4.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="DungeonTileset" type="Node2D"]
+
+[node name="BasicTile" type="Sprite" parent="."]
+position = Vector2( 10.0808, 17.1083 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BasicTile"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicTile/StaticBody2D"]
+position = Vector2( 0, 8 )
+shape = SubResource( 1 )

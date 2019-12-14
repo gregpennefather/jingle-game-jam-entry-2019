@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/0x72_16x16DungeonTileset.v4.png" type="Texture" id=1]
+[ext_resource path="res://Player/States/StateMachine.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/States/State.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/States/Move/Move.gd" type="Script" id=4]
+[ext_resource path="res://Player/States/Move/Run.gd" type="Script" id=5]
+[ext_resource path="res://Player/States/Move/Air.gd" type="Script" id=6]
+[ext_resource path="res://Player/Player.gd" type="Script" id=7]
+[ext_resource path="res://Player/Camera/CameraRig.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Player/States/Move/Idle.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.3345, 15.0047 )
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 2
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1.50246, -31.3373 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 224, 16, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3.87312, -14.4384 )
+shape = SubResource( 1 )
+
+[node name="FloorDetector" type="RayCast2D" parent="."]
+position = Vector2( 0, -10 )
+enabled = true
+cast_to = Vector2( 0, 12 )
+collision_mask = 2
+
+[node name="StateMachine" parent="." instance=ExtResource( 2 )]
+initial_state = NodePath("Move/Idle")
+
+[node name="Move" parent="StateMachine" instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="Idle" parent="StateMachine/Move" instance=ExtResource( 3 )]
+script = ExtResource( 9 )
+
+[node name="Run" parent="StateMachine/Move" instance=ExtResource( 3 )]
+script = ExtResource( 5 )
+
+[node name="Air" parent="StateMachine/Move" instance=ExtResource( 3 )]
+script = ExtResource( 6 )
+acceleration_x = 50.0
+
+[node name="CameraRig" parent="." instance=ExtResource( 8 )]
