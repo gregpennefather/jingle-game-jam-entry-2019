@@ -1,17 +1,171 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/0x72_16x16DungeonTileset.v4.png" type="Texture" id=1]
 [ext_resource path="res://Player/Body/Body.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SwordSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -7, -25.31 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SwordSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -216.916 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SwordSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.25, 1.25 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SwingArea/CollisionPolygon2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Polygon2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "run"
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("ArmouredSprite:position")
+tracks/0/path = NodePath("SwordSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -7, -25.31 ), Vector2( -9.67, -23 ), Vector2( -7, -25.37 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SwordSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -216.916, -230.0, -216.916 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "swing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SwordSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 18.7621, -32.6168 ), Vector2( 11.6541, -49.7597 ), Vector2( 22.5252, -22.5819 ), Vector2( 25.4521, -14.6376 ), Vector2( 25.4521, -14.6376 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SwordSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -316.216, -336.355, -282.971, -244.338, -244.338 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SwordSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.25, 1.25 ), Vector2( 1.5, 2 ), Vector2( 1.5, 2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SwingArea/CollisionPolygon2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Polygon2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+
+[sub_resource type="Animation" id=4]
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Frame/ArmouredSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -23,7 +177,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -32 ), Vector2( 0, -34 ), Vector2( 0, -32 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("UnarmouredSprite:position")
+tracks/1/path = NodePath("Frame/UnarmouredSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -39,7 +193,40 @@ tracks/1/keys = {
 script = ExtResource( 2 )
 Armoured = false
 
-[node name="ArmouredSprite" type="Sprite" parent="."]
+[node name="Sword" type="Node2D" parent="."]
+
+[node name="SwordSprite" type="Sprite" parent="Sword"]
+position = Vector2( -7, -25.31 )
+rotation = -3.7859
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 33, 16, 32 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sword"]
+anims/idle = SubResource( 1 )
+anims/run = SubResource( 2 )
+anims/swing = SubResource( 6 )
+next/swing = "idle"
+
+[node name="Polygon2D" type="Polygon2D" parent="Sword"]
+visible = false
+z_index = -2
+color = Color( 0.8, 0.666667, 0.266667, 1 )
+polygon = PoolVector2Array( 6.37366, -33.8742, 31.4608, -60.6339, 43.1682, -43.0728, 50.6943, -21.7487, 51.9487, -0.842743, 18.4991, -12.5501 )
+
+[node name="SwingArea" type="Area2D" parent="Sword"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sword/SwingArea"]
+visible = false
+polygon = PoolVector2Array( 7.6106, -34.735, 25.1716, -74.8745, 51.9313, -28.0451, 52.3494, 0.387001, 12.2099, -14.6653 )
+disabled = true
+
+[node name="Frame" type="Node2D" parent="."]
+
+[node name="ArmouredSprite" type="Sprite" parent="Frame"]
 visible = false
 position = Vector2( 0, -32 )
 scale = Vector2( 2, 2 )
@@ -47,13 +234,16 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 240, 225, 16, 32 )
 
-[node name="UnarmouredSprite" type="Sprite" parent="."]
+[node name="UnarmouredSprite" type="Sprite" parent="Frame"]
 position = Vector2( 0, -16 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 160, 224, 16, 16 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 1 )
-anims/run = SubResource( 2 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Frame"]
+root_node = NodePath("../..")
+anims/idle = SubResource( 3 )
+anims/run = SubResource( 4 )
+[connection signal="animation_finished" from="Sword/AnimationPlayer" to="." method="_on_Sword_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="Sword/SwingArea" to="." method="_on_SwingArea_body_entered"]
