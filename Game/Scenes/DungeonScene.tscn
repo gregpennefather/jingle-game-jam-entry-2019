@@ -76,6 +76,13 @@ heart_container_reference_path = NodePath("../../UI/HeartContainer")
 
 [node name="Door" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( 222.236, 415.456 )
+is_open = false
+keys_item_reference_path = NodePath("../../Player/Items/Keys")
+
+[node name="Door2" parent="Objects" instance=ExtResource( 8 )]
+position = Vector2( 408.335, 416.749 )
+is_open = false
+keys_item_reference_path = NodePath("../../Player/Items/Keys")
 
 [node name="Enemies" type="Node" parent="."]
 
