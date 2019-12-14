@@ -31,7 +31,7 @@ shape = SubResource( 1 )
 [node name="FloorDetector" type="RayCast2D" parent="."]
 position = Vector2( 0, -10 )
 enabled = true
-cast_to = Vector2( 0, 12 )
+cast_to = Vector2( 0, 11 )
 collision_mask = 2
 
 [node name="StateMachine" parent="." instance=ExtResource( 2 )]
@@ -39,6 +39,10 @@ initial_state = NodePath("Move/Idle")
 
 [node name="Move" parent="StateMachine" instance=ExtResource( 3 )]
 script = ExtResource( 4 )
+max_speed_default = Vector2( 250, 400 )
+acceleration_default = Vector2( 600, 1200 )
+jump_impulse = 350.0
+max_jump_speed = 600
 
 [node name="Idle" parent="StateMachine/Move" instance=ExtResource( 3 )]
 script = ExtResource( 9 )
@@ -48,6 +52,13 @@ script = ExtResource( 5 )
 
 [node name="Air" parent="StateMachine/Move" instance=ExtResource( 3 )]
 script = ExtResource( 6 )
-acceleration_x = 50.0
+acceleration_x = 400.0
+fall_acceleration = 800.0
+extended_jump_impulse_factor = 0.75
+
+[node name="JumpDuration" type="Timer" parent="StateMachine/Move/Air"]
+wait_time = 0.5
+one_shot = true
 
 [node name="CameraRig" parent="." instance=ExtResource( 8 )]
+[connection signal="timeout" from="StateMachine/Move/Air/JumpDuration" to="StateMachine/Move/Air" method="_on_JumpDuration_timeout"]

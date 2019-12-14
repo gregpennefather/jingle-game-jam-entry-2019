@@ -15,10 +15,9 @@ func physics_process(delta: float) -> void:
 		_state_machine.transition_to("Move/Air")
 
 func enter(msg: Dictionary = {}) -> void:
-	move.enter(msg)
+	move.enter(msg)	
 	move.max_speed = move.max_speed_default
 	move.velocity = Vector2.ZERO
-
 
 func exit() -> void:
 	get_parent().exit()
