@@ -28,8 +28,20 @@ region_rect = Rect2( 192, 224, 16, 32 )
 position = Vector2( 3.87312, -14.4384 )
 shape = SubResource( 1 )
 
-[node name="FloorDetector" type="RayCast2D" parent="."]
+[node name="FloorDetectorLeft" type="RayCast2D" parent="."]
+position = Vector2( -8, -10 )
+enabled = true
+cast_to = Vector2( 0, 11 )
+collision_mask = 2
+
+[node name="FloorDetectorCenter" type="RayCast2D" parent="."]
 position = Vector2( 0, -10 )
+enabled = true
+cast_to = Vector2( 0, 11 )
+collision_mask = 2
+
+[node name="FloorDetectorRight" type="RayCast2D" parent="."]
+position = Vector2( 8, -10 )
 enabled = true
 cast_to = Vector2( 0, 11 )
 collision_mask = 2
@@ -39,9 +51,10 @@ initial_state = NodePath("Move/Idle")
 
 [node name="Move" parent="StateMachine" instance=ExtResource( 3 )]
 script = ExtResource( 4 )
-max_speed_default = Vector2( 250, 400 )
-acceleration_default = Vector2( 600, 1200 )
+max_speed_default = Vector2( 225, 400 )
+acceleration_default = Vector2( 500, 1200 )
 jump_impulse = 350.0
+air_jump_impulse = 250.0
 max_jump_speed = 600
 
 [node name="Idle" parent="StateMachine/Move" instance=ExtResource( 3 )]
@@ -53,11 +66,15 @@ script = ExtResource( 5 )
 [node name="Air" parent="StateMachine/Move" instance=ExtResource( 3 )]
 script = ExtResource( 6 )
 acceleration_x = 400.0
-fall_acceleration = 800.0
-extended_jump_impulse_factor = 0.75
+fall_acceleration = 850.0
+extended_jump_impulse_factor = 0.6
 
 [node name="JumpDuration" type="Timer" parent="StateMachine/Move/Air"]
 wait_time = 0.5
+one_shot = true
+
+[node name="EarlyJumpTimer" type="Timer" parent="StateMachine/Move"]
+wait_time = 0.25
 one_shot = true
 
 [node name="CameraRig" parent="." instance=ExtResource( 8 )]

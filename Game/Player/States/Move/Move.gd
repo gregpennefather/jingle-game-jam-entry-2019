@@ -3,6 +3,7 @@ extends State
 export var max_speed_default := Vector2(300.0, 400.0)
 export var acceleration_default := Vector2(1000.0, 1000.0)
 export var jump_impulse := 200.0
+export var air_jump_impulse := 200.0
 export var max_jump_speed := 800
 export var max_fall_speed := 400
 
@@ -10,14 +11,24 @@ var acceleration := acceleration_default
 var max_speed := max_speed_default
 var velocity := Vector2.ZERO
 
+var early_jump_active : bool setget ,get_early_jump_active
+
+func get_early_jump_active() -> bool:
+	return not $EarlyJumpTimer.is_stopped()
 
 func unhandled_input(event: InputEvent) -> void:
-	if owner.is_on_ground() and event.is_action_pressed("jump"):
-		_state_machine.transition_to("Move/Air", { impulse = jump_impulse })
+	if event.is_action_pressed("jump"):
+		if owner.is_on_ground(): 
+			_state_machine.transition_to("Move/Air", { impulse = jump_impulse })
+		else:
+			$EarlyJumpTimer.start()
 
 func physics_process(delta: float) -> void:
 	velocity = calculate_velocity(velocity, max_speed, max_jump_speed, max_fall_speed, acceleration, delta, get_move_direction())
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
+	
+func clear_early_jump() -> void:
+	$EarlyJumpTimer.stop()
 	
 static func calculate_velocity(
 		old_velocity: Vector2,
