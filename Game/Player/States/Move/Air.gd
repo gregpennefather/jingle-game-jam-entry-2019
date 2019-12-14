@@ -26,6 +26,7 @@ func physics_process(delta: float) -> void:
 		move.velocity = move.calculate_velocity(move.velocity, move.max_speed, move.max_jump_speed, move.max_fall_speed, Vector2(0, move.jump_impulse) * extended_jump_impulse_factor, delta, Vector2.UP)
 		
 	move.physics_process(delta)
+	Events.emit_signal("player_moved", owner, move.get_move_direction())
 	
 	if owner.is_on_ground() and not just_jumped:
 		if move.get_move_direction().x == 0:

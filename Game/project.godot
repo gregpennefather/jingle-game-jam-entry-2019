@@ -36,6 +36,10 @@ config/name="jingle-game-jam-entry-2019"
 run/main_scene="res://Scenes/DungeonScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Events="*res://AutoLoad/Events.gd"
+
 [display]
 
 window/size/width=1280

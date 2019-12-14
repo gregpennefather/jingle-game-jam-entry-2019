@@ -16,6 +16,7 @@ func physics_process(delta: float) -> void:
 	else:
 		_state_machine.transition_to("Move/Air")
 	move.physics_process(delta)
+	Events.emit_signal("player_moved", owner, move.get_move_direction())
 
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
