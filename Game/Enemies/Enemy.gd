@@ -38,3 +38,7 @@ func _on_CollisionArea_body_entered(body):
 
 func _on_DespawnTimer_timeout():
 	call_deferred("queue_free")
+
+
+func _on_VisibilityEnabler2D_screen_entered():
+	pass # Replace with function body.

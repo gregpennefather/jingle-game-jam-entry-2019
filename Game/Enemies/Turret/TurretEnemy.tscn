@@ -11,10 +11,10 @@ radius = 11.5
 [sub_resource type="CircleShape2D" id=2]
 radius = 18.9769
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 315, 230 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "attack"
 length = 0.75
 step = 0.05
@@ -31,7 +31,7 @@ tracks/0/keys = {
 "values": [ 359.0, 180.0, 0.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "die"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
@@ -46,8 +46,7 @@ tracks/0/keys = {
 "values": [ Vector2( 2, 2 ), Vector2( 0.1, 0.1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "idle"
+[sub_resource type="Animation" id=6]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -88,20 +87,20 @@ shape = SubResource( 2 )
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
 [node name="FirePosition" type="Position2D" parent="." index="6"]
 position = Vector2( -16.6591, 0 )
 
 [node name="AttackRechargeTimer" type="Timer" parent="." index="7"]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 autoplay = "idle"
-anims/attack = SubResource( 5 )
-anims/die = SubResource( 6 )
-anims/idle = SubResource( 4 )
+anims/attack = SubResource( 4 )
+anims/die = SubResource( 5 )
+anims/idle = SubResource( 6 )
 [connection signal="body_entered" from="AggroArea" to="." method="_on_AggroArea_body_entered"]
 [connection signal="body_exited" from="AggroArea" to="." method="_on_AggroArea_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -6,7 +6,8 @@ export var key_container_reference_path: NodePath
 
 export (int) var DEFAULT_NUMBER_OF_KEYS := 3
 
-var keys_remaining := DEFAULT_NUMBER_OF_KEYS
+var max_keys := DEFAULT_NUMBER_OF_KEYS
+var keys_remaining := max_keys
 
 func _ready():
 	update_max_keys()
@@ -20,3 +21,4 @@ func use_key() -> bool:
 
 func update_max_keys():
 	key_container.max_keys = keys_remaining
+	key_container.set_available_keys(keys_remaining)

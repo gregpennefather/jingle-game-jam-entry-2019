@@ -4,7 +4,7 @@
 [ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/0x72_16x16DungeonTileset.v4.png" type="Texture" id=3]
 
-[node name="Dwarf" instance=ExtResource( 2 )]
+[node name="Dwarf" index="0" instance=ExtResource( 2 )]
 position = Vector2( 0, -9.20922 )
 script = ExtResource( 1 )
 
@@ -28,3 +28,6 @@ text = "Press E to give Dwarf your Sword"
 
 [node name="ThankYouLabel" parent="." index="6"]
 text = "Thank ye!"
+
+[node name="WontSaveUsLabel" parent="." index="7"]
+text = "Without me sword I'm doomed. I'd even settle for a pick right now."

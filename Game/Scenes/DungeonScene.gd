@@ -1,8 +1,12 @@
 extends Node2D
 
 func _ready():
+	$Player.global_position = PlayerStats.RespawnPosition
 	$Player._on_player_items_changed()
-
+	if not PlayerStats.Sword:
+		$WorldControls/AttackOrDodgeLabel.text = "Dodge!"
+	if not PlayerStats.Boots:
+		$WorldControls/DoubleJumpLabel.text = "Take the long way!"
 
 func _on_ExitDoor_body_entered(body):
 	print('entered')

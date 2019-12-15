@@ -97,6 +97,10 @@ one_shot = true
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource( 18 )
 
+[node name="RespawnTimer" type="Timer" parent="StateMachine/Die"]
+wait_time = 2.0
+one_shot = true
+
 [node name="AttackStateMachine" type="Node" parent="."]
 script = ExtResource( 15 )
 initial_state = NodePath("Attack/Idle")
@@ -112,8 +116,10 @@ script = ExtResource( 13 )
 script = ExtResource( 14 )
 
 [node name="CameraRig" parent="." instance=ExtResource( 8 )]
+offset = Vector2( 150, 225 )
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource( 17 )
 item_reference_path = NodePath("../Items/Armour")
 [connection signal="timeout" from="StateMachine/Move/Air/JumpDuration" to="StateMachine/Move/Air" method="_on_JumpDuration_timeout"]
+[connection signal="timeout" from="StateMachine/Die/RespawnTimer" to="StateMachine/Die" method="_on_RespawnTimer_timeout"]

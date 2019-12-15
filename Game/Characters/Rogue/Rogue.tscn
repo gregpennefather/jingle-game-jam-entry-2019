@@ -18,3 +18,6 @@ text = "Press E to give the Rogue a key"
 
 [node name="ThankYouLabel" parent="." index="6"]
 text = "Thanks dumbass - good luck."
+
+[node name="WontSaveUsLabel" parent="." index="7"]
+text = "Can't blame you'd. I'd give myself the best chance too."

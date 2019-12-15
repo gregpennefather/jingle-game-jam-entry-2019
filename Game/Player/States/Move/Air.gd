@@ -10,7 +10,6 @@ var jump_active: bool = false
 var just_jumped: bool = false
 var holding_last_jump: bool = false
 var air_jump_used: bool = false
-var can_air_jump: bool
 
 onready var item_reference: Node = get_node(item_reference_path)
 
@@ -23,12 +22,8 @@ func get_early_jump_active() -> bool:
 
 onready var move:= get_parent()
 
-func _ready():
-	PlayerStats.connect("player_items_changed", self, 'set_can_air_jump')
-	set_can_air_jump()
-
-func set_can_air_jump() -> void:
-	can_air_jump = item_reference.active
+func can_air_jump() -> bool:
+	return item_reference.active;
 
 func unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_released("jump"):
@@ -36,7 +31,7 @@ func unhandled_input(event: InputEvent) -> void:
 	if not holding_last_jump and jump_active:
 		exit_jump()
 	if Input.is_action_pressed("jump") and not holding_last_jump:
-		if not air_jump_used and can_air_jump:
+		if not air_jump_used and can_air_jump():
 			enter_jump(air_jump_impulse, true)
 		elif not owner.is_on_ground():
 			$EarlyJumpTimer.start()

@@ -16,11 +16,12 @@ func enter(msg: Dictionary = {}) -> void:
 		velocity = msg.velocity
 	owner.camera_rig.is_active = false
 	owner.body.play_die()
-	owner.body.connect("animation_finished", self, "_on_Player_animation_finished")
+	$RespawnTimer.start()
 
 func exit() -> void:
 	return
-	
-	
-func _on_Player_animation_finished():
-	print('death animation done')
+
+
+func _on_RespawnTimer_timeout():
+	print('death done')
+	get_tree().change_scene("res://Scenes/DungeonScene.tscn")

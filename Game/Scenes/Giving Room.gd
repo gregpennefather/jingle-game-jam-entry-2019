@@ -1,12 +1,11 @@
 extends Node2D
 
 func _ready():
-	PlayerStats.Sword = $Player/Items/Sword.active
-	PlayerStats.Boots = $Player/Items/Boots.active
-	PlayerStats.Armour = $Player/Items/Armour.active
-	PlayerStats.Keys = $Player/Items/Keys.DEFAULT_NUMBER_OF_KEYS
 	Events.connect("player_gave_up_item", self, '_on_player_gave_up_item')	
 	Events.connect("player_took_back_item", self, '_on_player_took_back_item')	
+	
+	if not PlayerStats.SaveSelfOnlyPath:
+		$SaveYourselfLabel.text = "Give others your gear to save them!"
 
 func _on_player_gave_up_item(item_name):
 	print(item_name)

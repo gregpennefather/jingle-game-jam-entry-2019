@@ -11,6 +11,11 @@ onready var move := $StateMachine/Move
 
 const FLOOR_NORMAL := Vector2.UP
 
+var keys_used : int setget ,get_keys_used
+
+func get_keys_used() -> int:
+	return $Items/Keys.max_keys - $Items/Keys.keys_remaining
+
 func _ready():
 	Events.connect("player_moved", self, "_on_Player_moved")
 	Events.connect("player_attacked", self, "_on_Player_attacked")
@@ -25,7 +30,9 @@ func _on_player_items_changed():
 	$Items/Boots.active = PlayerStats.Boots
 	$Items/Armour.active = PlayerStats.Armour
 	$Body.Armoured = $Items/Armour.active
-	$Items/Keys.keys_remaining = PlayerStats.Keys
+	$Items/Keys.max_keys = PlayerStats.Keys
+	print('setting keys_remaining %s - %s = %s' %[PlayerStats.Keys, PlayerStats.KeysUsed, PlayerStats.Keys - PlayerStats.KeysUsed])
+	$Items/Keys.keys_remaining = PlayerStats.Keys - PlayerStats.KeysUsed
 	$Items/Keys.update_max_keys()
 	$Health.update_max_health()
 

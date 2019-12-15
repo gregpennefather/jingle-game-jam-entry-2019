@@ -71,3 +71,8 @@ func _ready():
 		else:
 			$Button.hide()
 			$EscapedLabel2.text = "You escaped - and so did everyone else! You truely are a generous hero."
+
+
+func _on_Button_pressed():
+	PlayerStats.reset()
+	get_tree().change_scene("res://Scenes/Giving Room.tscn")

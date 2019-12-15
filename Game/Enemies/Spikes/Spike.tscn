@@ -32,3 +32,5 @@ region_rect = Rect2( 560, 268, 80, 102 )
 
 [node name="CollisionShape2D" parent="CollisionArea" index="0"]
 shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]

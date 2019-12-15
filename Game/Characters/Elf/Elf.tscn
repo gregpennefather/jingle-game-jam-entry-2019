@@ -23,3 +23,6 @@ text = "Press E to give the Elf your Boots"
 
 [node name="ThankYouLabel" parent="." index="6"]
 text = "Your kindess will be repaid human."
+
+[node name="WontSaveUsLabel" parent="." index="7"]
+text = "Leaving us to die? Not much honour in you humans."

@@ -4,7 +4,7 @@ var has_sword : bool setget set_has_sword
 
 func set_has_sword(value: bool) -> void:
 	has_sword = value
-	if has_node("SwordSprite"):
+	if has_node("Body/SwordSprite"):
 		if has_sword:
 			$Body/SwordSprite.show()
 		else:

@@ -1,6 +1,6 @@
 extends Area2D
 
-export var speed = 450
+export var speed = 500
 export var steer_force = 50.0
 
 var velocity = Vector2.ZERO

@@ -3,10 +3,10 @@
 [ext_resource path="res://Assets/0x72_16x16DungeonTileset.v4.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Character.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 40, 48 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 
 [sub_resource type="Animation" id=3]
 length = 0.6
@@ -40,11 +40,11 @@ region_rect = Rect2( 176, 224, 16, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, -32 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 method_call_mode = 1
-anims/idle = SubResource( 2 )
+anims/idle = SubResource( 5 )
 anims/victory = SubResource( 3 )
 
 [node name="Label" type="Label" parent="."]
@@ -96,6 +96,20 @@ margin_right = 80.0
 margin_bottom = -32.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "I'm saved! Thank you!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WontSaveUsLabel" type="Label" parent="."]
+visible = false
+margin_left = -72.0
+margin_top = -94.8424
+margin_right = 80.0
+margin_bottom = -29.8424
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "You have so much gear, but you won't spare anything to help us? You coward."
 align = 1
 autowrap = true
 __meta__ = {
