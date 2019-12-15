@@ -7,6 +7,7 @@ onready var body := $Body
 onready var health := $Health
 onready var camera_rig := $CameraRig
 onready var attack_state_machine := $AttackStateMachine
+onready var move := $StateMachine/Move
 
 const FLOOR_NORMAL := Vector2.UP
 
@@ -39,4 +40,4 @@ static func _on_Player_hit(player: Player, damage := 1) -> void:
 		player.health.take_damage(damage)
 
 static func _on_Player_died(player: Player) -> void:
-	player.state_machine.transition_to("Die")
+	player.state_machine.transition_to("Die", { Velocity = player.move.velocity })
