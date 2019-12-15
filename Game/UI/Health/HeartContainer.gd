@@ -14,11 +14,8 @@ func set_max_health(value: int):
 
 func set_current_health(current_health: int):
 	var count := 0
-	print('current_health: %s' %current_health)
 	for child_index in range(max_health):
-		if child_index < current_health:
-			print('count %s shown' %count)
+		if child_index >= (max_health - current_health):
 			$HBoxContainer.get_child(child_index).modulate = Color(1,1,1,1)
 		else:
-			print('count %s hidden' %count)
 			$HBoxContainer.get_child(child_index).modulate = Color("7d4b3232")
