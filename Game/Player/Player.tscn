@@ -91,7 +91,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="EarlyJumpTimer" type="Timer" parent="StateMachine/Move/Air"]
-wait_time = 0.5
+wait_time = 0.15
 one_shot = true
 
 [node name="Die" type="Node" parent="StateMachine"]
