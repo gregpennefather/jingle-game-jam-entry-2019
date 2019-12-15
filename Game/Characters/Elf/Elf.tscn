@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Elf/Elf.gd" type="Script" id=2]
+
+[node name="Elf" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="Body" index="0"]
+region_rect = Rect2( 160, 240, 16, 16 )
+
+[node name="Label" parent="." index="3"]
+margin_left = -80.0
+margin_top = -94.8424
+margin_right = 80.0
+margin_bottom = -29.8424
+text = "I'm pretty nimble. If you give me those double jump boots I'll be able to escape!"
+
+[node name="GiveButton" parent="." index="4"]
+margin_top = -142.842
+margin_bottom = -110.842
+text = "Press E to give the Elf your Boots"
+
+[node name="ThankYouLabel" parent="." index="6"]
+text = "Your kindess will be repaid human."

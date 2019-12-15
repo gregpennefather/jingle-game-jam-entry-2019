@@ -1,19 +1,23 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Body/Body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/VictoryScreen.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Hills Free (update 3.0).png" type="Texture" id=3]
 [ext_resource path="res://Characters/Knight/Knight.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Fonts/Cocogoose Pro Light-trial.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/Fonts/GenghisKhan.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://Characters/Dwarf/Dwarf.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Characters/Elf/Elf.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Characters/Wimp/Wimp.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Characters/OldMan/OldMan.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Characters/Rogue/Rogue.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Characters/Wizard/Wizard.tscn" type="PackedScene" id=11]
 
-[sub_resource type="DynamicFont" id=1]
-size = 36
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
+[sub_resource type="DynamicFont" id=3]
+size = 24
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 24
+size = 32
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 5 )
@@ -33,42 +37,52 @@ zoom = Vector2( 0.35, 0.35 )
 [node name="PlayerBody" parent="." instance=ExtResource( 1 )]
 position = Vector2( 568, 368 )
 
+[node name="Dwarf" parent="." instance=ExtResource( 6 )]
+position = Vector2( 624, 352 )
+scale = Vector2( -1, 1 )
+
 [node name="Knight" parent="." instance=ExtResource( 4 )]
 position = Vector2( 512, 352 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 352.0
+margin_left = 488.0
 margin_top = 144.0
-margin_right = 435.0
-margin_bottom = 164.0
-text = "Menu"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EscapedLabel" type="Label" parent="."]
-margin_left = 435.0
-margin_top = 144.0
-margin_right = 747.0
-margin_bottom = 203.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "You escaped!"
-align = 1
-uppercase = true
+margin_right = 630.0
+margin_bottom = 172.0
+custom_fonts/font = SubResource( 3 )
+text = "Try Save More"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="EscapedLabel2" type="Label" parent="."]
-margin_left = 376.0
-margin_top = 203.0
-margin_right = 752.0
-margin_bottom = 308.0
+margin_left = 360.0
+margin_top = 176.0
+margin_right = 792.0
+margin_bottom = 317.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "But no one else did - If only you had given up a little to save others..."
+text = "You escaped - but no one else did - If only you had given up a little they would have survived...
+
+"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Elf" parent="." instance=ExtResource( 7 )]
+position = Vector2( 488, 352 )
+
+[node name="OldMan" parent="." instance=ExtResource( 9 )]
+position = Vector2( 744, 352 )
+scale = Vector2( -1, 1 )
+
+[node name="Rogue" parent="." instance=ExtResource( 10 )]
+position = Vector2( 384, 352 )
+
+[node name="Wimp" parent="." instance=ExtResource( 8 )]
+position = Vector2( 656, 352 )
+scale = Vector2( -1, 1 )
+
+[node name="Wizard" parent="." instance=ExtResource( 11 )]
+position = Vector2( 696, 320 )

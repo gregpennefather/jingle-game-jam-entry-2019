@@ -14,6 +14,7 @@ func _on_Area2D_body_entered(body):
 		player_in_range = true
 		if is_saved:
 			$ThankYouLabel.show()
+			$TakeButton.show()
 		else:
 			$Label.show()
 			$GiveButton.show()
@@ -25,13 +26,27 @@ func _on_Area2D_body_exited(body):
 		$Label.hide()
 		$GiveButton.hide()
 		$ThankYouLabel.hide()
+		$TakeButton.hide()
 		
 func _input(event):
-	if event.is_action_pressed("give") and player_in_range and not is_saved:
-		save()
+	if event.is_action_pressed("give") and player_in_range:
+		if not is_saved:
+			save()
+		else:
+			take_back()
+		
 
 func save():
 	is_saved = true	
 	$Label.hide()
 	$GiveButton.hide()
 	$ThankYouLabel.show()
+	$TakeButton.show()
+
+func take_back():
+	is_saved = false	
+	$Label.show()
+	$GiveButton.show()
+	$ThankYouLabel.hide()
+	$TakeButton.hide()
+	

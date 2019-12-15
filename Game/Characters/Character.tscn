@@ -3,33 +3,34 @@
 [ext_resource path="res://Assets/0x72_16x16DungeonTileset.v4.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Character.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 56, 48 )
-
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 48 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "victory"
+
+[sub_resource type="Animation" id=3]
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Body:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.6 ),
-"transitions": PoolRealArray( 1, 2.63902, 0.125 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
 }
 
 [node name="Character" type="Node2D"]
+position = Vector2( 0, -1.15762 )
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Body"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 region_enabled = true
@@ -39,12 +40,12 @@ region_rect = Rect2( 176, 224, 16, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, -32 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 method_call_mode = 1
-anims/idle = SubResource( 1 )
-anims/victory = SubResource( 2 )
+anims/idle = SubResource( 2 )
+anims/victory = SubResource( 3 )
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -67,6 +68,20 @@ margin_right = 80.0
 margin_bottom = -96.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Press E to Knight give Armour"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TakeButton" type="Label" parent="."]
+visible = false
+margin_left = -72.0
+margin_top = -128.0
+margin_right = 80.0
+margin_bottom = -96.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Press E to take back your item"
 align = 1
 autowrap = true
 __meta__ = {

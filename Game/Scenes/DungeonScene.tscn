@@ -14,10 +14,10 @@
 [ext_resource path="res://UI/Keys/KeyContainer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/DungeonScene.gd" type="Script" id=13]
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 318, 194 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 316, 152 )
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -72,13 +72,13 @@ tracks/0/keys = {
 "values": [ Vector2( 2, 2 ), Vector2( 2.2, 2.2 ), Vector2( 2, 2 ) ]
 }
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=7]
 size = 36
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 9 )
 
-[sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 7 )
 Label/colors/font_color = Color( 0, 0, 0, 1 )
 Label/colors/font_color_shadow = Color( 0.360784, 0.337255, 0.337255, 0 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -568,14 +568,14 @@ position = Vector2( 2965, -1345 )
 position = Vector2( 1970, -1550 )
 
 [node name="CollisionShape2D" parent="Enemies/TurretEnemy9/AggroArea" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 1 )
 
 [node name="TurretEnemy10" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 1340, -1610 )
 
 [node name="CollisionShape2D" parent="Enemies/TurretEnemy10/AggroArea" index="0"]
 position = Vector2( 0, 50 )
-shape = SubResource( 8 )
+shape = SubResource( 2 )
 
 [node name="TurretEnemy4" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 385, -355 )
@@ -593,7 +593,7 @@ margin_left = -20.0
 margin_top = -35.0
 margin_right = 20.0
 margin_bottom = 5.0
-theme = SubResource( 2 )
+theme = SubResource( 8 )
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false

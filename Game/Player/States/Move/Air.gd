@@ -24,6 +24,10 @@ func get_early_jump_active() -> bool:
 onready var move:= get_parent()
 
 func _ready():
+	PlayerStats.connect("player_items_changed", self, 'set_can_air_jump')
+	set_can_air_jump()
+
+func set_can_air_jump() -> void:
 	can_air_jump = item_reference.active
 
 func unhandled_input(event: InputEvent) -> void:

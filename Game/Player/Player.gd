@@ -25,7 +25,8 @@ func _on_player_items_changed():
 	$Items/Boots.active = PlayerStats.Boots
 	$Items/Armour.active = PlayerStats.Armour
 	$Body.Armoured = $Items/Armour.active
-	$Items/Keys.DEFAULT_NUMBER_OF_KEYS = PlayerStats.Keys
+	$Items/Keys.keys_remaining = PlayerStats.Keys
+	$Items/Keys.update_max_keys()
 	$Health.update_max_health()
 
 func update_body():

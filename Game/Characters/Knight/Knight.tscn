@@ -1,26 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Knight/Knight.gd" type="Script" id=2]
-[ext_resource path="res://Assets/0x72_16x16DungeonTileset.v4.png" type="Texture" id=3]
 
 [node name="Knight" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="ArmouredSprite" type="Sprite" parent="." index="0"]
-visible = false
-position = Vector2( 0, -16 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 3 )
-region_enabled = true
-region_rect = Rect2( 240, 224, 16, 32 )
-
-[node name="Label" parent="." index="4"]
+[node name="Label" parent="." index="3"]
 margin_top = -96.0
 margin_right = 72.0
 margin_bottom = -15.0
-text = "I'm a knight! If you give me your armour I can escape! But you'll have 3 less health!"
+text = "I'm a knight! If you give me your armour I can escape! But you'll have 2 less health!"
 
-[node name="GiveButton" parent="." index="5"]
+[node name="GiveButton" parent="." index="4"]
 margin_top = -144.0
 margin_bottom = -112.0
+text = "Press E to give the Knight your Armour"

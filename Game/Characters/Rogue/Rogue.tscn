@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Characters/Rogue/Rogue.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=2]
+
+[node name="Rogue" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+key_holder_name = "RogueKey"
+
+[node name="Sprite" parent="Body" index="0"]
+region_rect = Rect2( 112, 224, 16, 16 )
+
+[node name="Label" parent="." index="3"]
+text = "Oi - gimme one of those keys so I can escape!"
+
+[node name="GiveButton" parent="." index="4"]
+text = "Press E to give the Rogue a key"
+
+[node name="ThankYouLabel" parent="." index="6"]
+text = "Thanks dumbass - good luck."

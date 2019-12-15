@@ -9,8 +9,7 @@ export (int) var DEFAULT_NUMBER_OF_KEYS := 3
 var keys_remaining := DEFAULT_NUMBER_OF_KEYS
 
 func _ready():
-	print('keys item ready')
-	key_container.max_keys = keys_remaining
+	update_max_keys()
 
 func use_key() -> bool:
 	if keys_remaining > 0:
@@ -18,3 +17,6 @@ func use_key() -> bool:
 		key_container.set_available_keys(keys_remaining)
 		return true
 	return false
+
+func update_max_keys():
+	key_container.max_keys = keys_remaining
