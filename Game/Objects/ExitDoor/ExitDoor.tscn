@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/ExitDoor/ExitDoor.gd" type="Script" id=1]
+[ext_resource path="res://Assets/0x72_16x16DungeonTileset_walls.v2.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.973, 33.3814 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 32 )
+
+[node name="ExitDoor" type="Area2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+
+[node name="DoorClosed" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+z_index = -1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 112, 16, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 16.1767, -0.32354 )
+shape = SubResource( 1 )
+
+[node name="DoorOpen" type="Node2D" parent="."]
+
+[node name="LeftSide" type="Sprite" parent="DoorOpen"]
+position = Vector2( -16, 0 )
+scale = Vector2( 2, 2 )
+z_index = -1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 176, 16, 16, 32 )
+
+[node name="RightSide" type="Sprite" parent="DoorOpen"]
+position = Vector2( 16, 0 )
+scale = Vector2( 2, 2 )
+z_index = 1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 192, 16, 16, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -16, 0 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_Door_body_entered"]
