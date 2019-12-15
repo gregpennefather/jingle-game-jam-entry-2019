@@ -9,7 +9,9 @@ func _ready():
 		$WorldControls/DoubleJumpLabel.text = "Take the long way!"
 
 func _on_ExitDoor_body_entered(body):
-	print('entered')
 	if body is Player:
-		print('player won!')
 		get_tree().change_scene("res://Scenes/VictoryScreen.tscn")
+
+
+func _on_AudioStreamPlayer_finished():
+	$AudioStreamPlayer.play()

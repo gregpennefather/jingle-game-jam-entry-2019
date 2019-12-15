@@ -14,7 +14,7 @@ radius = 18.9769
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 315, 230 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 resource_name = "attack"
 length = 0.75
 step = 0.05
@@ -98,7 +98,7 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 autoplay = "idle"
-anims/attack = SubResource( 4 )
+anims/attack = SubResource( 7 )
 anims/die = SubResource( 5 )
 anims/idle = SubResource( 6 )
 [connection signal="body_entered" from="AggroArea" to="." method="_on_AggroArea_body_entered"]
