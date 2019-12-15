@@ -74,5 +74,5 @@ func _ready():
 
 
 func _on_Button_pressed():
-	PlayerStats.reset()
+	PlayerStats.reset(true)
 	get_tree().change_scene("res://Scenes/Giving Room.tscn")

@@ -33,7 +33,7 @@ func _on_Area2D_body_exited(body):
 		$WontSaveUsLabel.hide() 
 		
 func _input(event):
-	if event.is_action_pressed("give") and player_in_range:
+	if event.is_action_pressed("give") and player_in_range and not PlayerStats.SaveSelfOnlyPath:
 		if not is_saved:
 			save()
 		else:

@@ -14,7 +14,7 @@ var OldManSaved: bool = false
 var WimpSaved: bool = false
 var SaveSelfOnlyPath: bool = true
 
-func reset():
+func reset(with_complete: bool = false):
 	Armour = true
 	Boots = true
 	Sword = true
@@ -25,4 +25,5 @@ func reset():
 	RogueSaved = false
 	OldManSaved = false
 	WimpSaved = false
-	SaveSelfOnlyPath = false
+	if with_complete:
+		SaveSelfOnlyPath = false

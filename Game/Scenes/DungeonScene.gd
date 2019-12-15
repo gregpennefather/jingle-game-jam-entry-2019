@@ -1,5 +1,10 @@
 extends Node2D
 
+func _input(event):
+	if event.is_action_pressed("escape"):
+		PlayerStats.reset()
+		get_tree().change_scene("res://Scenes/Giving Room.tscn")
+
 func _ready():
 	$Player.global_position = PlayerStats.RespawnPosition
 	$Player._on_player_items_changed()
