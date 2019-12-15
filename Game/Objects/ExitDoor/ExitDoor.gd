@@ -21,8 +21,4 @@ func update_display():
 			$DoorClosed.show()
 			$DoorOpen.hide()
 			$StaticBody2D.set_collision_layer_bit(1, true)
-
-func _on_Door_body_entered(body):
-	if body is Player:
-		print('player won!')
 		

@@ -16,7 +16,17 @@ func _ready():
 	Events.connect("player_attacked", self, "_on_Player_attacked")
 	Events.connect("player_hit", self, "_on_Player_hit")
 	Events.connect("player_died", self, "_on_Player_died")
+	PlayerStats.connect("player_items_changed", self, '_on_player_items_changed')
 	update_body()
+	
+func _on_player_items_changed():
+	$Items/Sword.active = PlayerStats.Sword
+	$Body.HasSword = $Items/Sword.active
+	$Items/Boots.active = PlayerStats.Boots
+	$Items/Armour.active = PlayerStats.Armour
+	$Body.Armoured = $Items/Armour.active
+	$Items/Keys.DEFAULT_NUMBER_OF_KEYS = PlayerStats.Keys
+	$Health.update_max_health()
 
 func update_body():
 	$Body.HasSword = $Items/Sword.active

@@ -12,6 +12,9 @@ var player_max_health: int
 var player_current_health: int
 
 func _ready():
+	update_max_health()
+
+func update_max_health():
 	player_max_health = base_player_health 
 	if item_reference.active:
 		player_max_health += item_reference.health_bonus

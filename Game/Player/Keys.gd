@@ -4,7 +4,7 @@ onready var key_container: Node = get_node(key_container_reference_path)
 
 export var key_container_reference_path: NodePath
 
-export (int) var DEFAULT_NUMBER_OF_KEYS := 1
+export (int) var DEFAULT_NUMBER_OF_KEYS := 3
 
 var keys_remaining := DEFAULT_NUMBER_OF_KEYS
 

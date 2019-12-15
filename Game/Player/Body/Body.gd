@@ -33,6 +33,9 @@ func set_facing(value: int) -> void:
 		scale.x = abs(scale.x) * -1
 		scale.x = abs(scale.x) * -1
 		
+func play_victory():
+	$Frame/AnimationPlayer.play("victory")
+		
 func play_run_animation():
 	if $Frame/AnimationPlayer.current_animation == "idle" or $Frame/AnimationPlayer.current_animation == "run":
 		$Frame/AnimationPlayer.play("run")
