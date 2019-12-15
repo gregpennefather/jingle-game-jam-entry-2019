@@ -14,7 +14,6 @@ func set_is_armoured(value: bool) -> void:
 
 func save():
 	.save()
-	print('knight saved')
 	self.is_armoured = true
 	Events.emit_signal("player_gave_up_item", "Armour")
 

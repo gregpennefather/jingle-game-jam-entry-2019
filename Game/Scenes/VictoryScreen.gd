@@ -8,7 +8,6 @@ func _ready():
 	
 	if not PlayerStats.Armour:
 		number_saved += 1
-		print('show knight')
 		$Knight.show()
 		$Knight.is_armoured = true
 		$Knight.play_victory()
@@ -17,7 +16,6 @@ func _ready():
 
 	if not PlayerStats.Sword:
 		number_saved += 1
-		print('show dwarf')
 		$Dwarf.show()
 		$Dwarf.has_sword = true
 		$Dwarf.play_victory()
@@ -26,7 +24,6 @@ func _ready():
 
 	if not PlayerStats.Boots:
 		number_saved += 1
-		print('show elf')
 		$Elf.show()
 		$Elf.play_victory()
 	else:
@@ -34,21 +31,18 @@ func _ready():
 
 	if  PlayerStats.RogueSaved:
 		number_saved += 1
-		print('show Rogue')
 		$Rogue.show()
 	else:
 		$Rogue.hide()
 		
 	if PlayerStats.OldManSaved:
 		number_saved += 1
-		print('show OldMan')
 		$OldMan.show()
 	else:
 		$OldMan.hide()	
 			
 	if PlayerStats.WimpSaved:
 		number_saved += 1
-		print('show Wimp')
 		$Wimp.show()
 		$Wimp.play_victory()
 	else:
@@ -56,7 +50,6 @@ func _ready():
 			
 	if not PlayerStats.ResurrectionRing:
 		number_saved += 1
-		print('show Wizard')
 		$Wizard.show()
 		$Wizard.play_victory()
 	else:

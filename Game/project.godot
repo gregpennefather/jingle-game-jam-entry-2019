@@ -50,7 +50,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="jingle-game-jam-entry-2019"
+config/name="Well Equiped Hero"
 run/main_scene="res://Scenes/Giving Room.tscn"
 config/icon="res://icon.png"
 

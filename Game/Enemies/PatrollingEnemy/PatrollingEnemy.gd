@@ -19,6 +19,5 @@ func _on_VisibilityEnabler2D_screen_entered():
 	var groups = get_groups()
 	for group in groups:
 		if not group.begins_with('root'):
-			print('enabling for group')
 			for enemy in get_tree().get_nodes_in_group(group):
 				enemy.set_physics_process(true)

@@ -12,7 +12,6 @@ func set_has_sword(value: bool) -> void:
 
 func save():
 	.save()
-	print('dwarf saved')
 	self.has_sword = true
 	Events.emit_signal("player_gave_up_item", "Sword")
 

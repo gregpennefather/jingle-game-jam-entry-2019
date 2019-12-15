@@ -31,7 +31,6 @@ func _on_player_items_changed():
 	$Items/Armour.active = PlayerStats.Armour
 	$Body.Armoured = $Items/Armour.active
 	$Items/Keys.max_keys = PlayerStats.Keys
-	print('setting keys_remaining %s - %s = %s' %[PlayerStats.Keys, PlayerStats.KeysUsed, PlayerStats.Keys - PlayerStats.KeysUsed])
 	$Items/Keys.keys_remaining = PlayerStats.Keys - PlayerStats.KeysUsed
 	$Items/Keys.update_max_keys()
 	$Health.update_max_health()

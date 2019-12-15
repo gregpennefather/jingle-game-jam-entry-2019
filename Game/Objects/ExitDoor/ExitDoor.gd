@@ -4,7 +4,6 @@ extends Area2D
 export (bool) var is_open = true setget set_is_open
 
 func _ready():
-	print(is_open)
 	update_display()
 
 func set_is_open(value: bool) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Characters/Knight/Knight.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tileset/DirtAutoTile/DirtAutoTile.tres" type="TileSet" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Characters/Wizard/Wizard.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/Fonts/Cocogoose Pro Light-trial.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://Tileset/Decorations.tres" type="TileSet" id=15]
+[ext_resource path="res://Scenes/DungeonScene.tscn" type="PackedScene" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -22,6 +23,7 @@ font_data = ExtResource( 14 )
 
 [node name="GivingRoom" type="Node2D"]
 script = ExtResource( 5 )
+dungeon_scene = ExtResource( 16 )
 
 [node name="Decorations" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )

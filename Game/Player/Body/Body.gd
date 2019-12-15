@@ -39,8 +39,6 @@ func play_victory():
 func play_run_animation():
 	if $Frame/AnimationPlayer.current_animation == "idle" or $Frame/AnimationPlayer.current_animation == "run"  or $Frame/AnimationPlayer.current_animation == "":
 		$Frame/AnimationPlayer.play("run")
-	else:
-		print('could not run as anim is %s' %$Frame/AnimationPlayer.current_animation)
 	if HasSword:
 		if $Sword/AnimationPlayer.current_animation == "run" or $Sword/AnimationPlayer.current_animation == "idle":
 			$Sword/AnimationPlayer.play("run")

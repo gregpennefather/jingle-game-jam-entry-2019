@@ -20,7 +20,6 @@ func update_max_health():
 		player_max_health += item_reference.health_bonus
 	player_current_health = player_max_health
 	heart_container.set_max_health(player_max_health)
-	print('max: %s, cur: %s' %[player_max_health, player_current_health])
 
 func _get_configuration_warning() -> String:
 	if not item_reference_path.is_empty():

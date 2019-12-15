@@ -3,12 +3,13 @@ extends Area2D
 
 export (bool) var is_open = true setget set_is_open
 
-onready var keys_item_reference: Node = get_node(keys_item_reference_path)
+onready var keys_item_reference: Node
 
 export var keys_item_reference_path: NodePath
 
 func _ready():
-	print(is_open)
+	if has_node(keys_item_reference_path):
+		keys_item_reference = get_node(keys_item_reference_path)
 	update_display()
 
 func set_is_open(value: bool) -> void:
@@ -28,7 +29,6 @@ func update_display():
 
 func _on_Door_body_entered(body):
 	if body is Player and not is_open:
-		print('player body')
 		if keys_item_reference.use_key():
 			self.is_open = true
 		

@@ -13,7 +13,8 @@ onready var despawn_timer := get_node("DespawnTimer")
 
 func _ready() -> void:
 	set_physics_process(false)
-	Events.connect("enemy_hit", self, "_on_hit_by_player")
+	if not Events.is_connected("enemy_hit", self, "_on_hit_by_player"):
+		Events.connect("enemy_hit", self, "_on_hit_by_player")
 	
 func change_facing() -> void:
 	velocity.x *= -1
@@ -33,7 +34,6 @@ static func _on_hit_by_player(enemy) -> void:
 
 func _on_CollisionArea_body_entered(body):
 	if body.has_method('_on_Player_hit') and alive:
-		print('collision')
 		Events.emit_signal("player_hit", body, damage_to_player)
 
 func _on_DespawnTimer_timeout():

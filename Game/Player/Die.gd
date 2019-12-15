@@ -23,5 +23,4 @@ func exit() -> void:
 
 
 func _on_RespawnTimer_timeout():
-	print('death done')
 	get_tree().change_scene("res://Scenes/DungeonScene.tscn")

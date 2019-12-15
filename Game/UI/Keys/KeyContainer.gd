@@ -5,7 +5,6 @@ export (PackedScene) var key_scene
 var max_keys: int setget set_max_keys
 
 func set_max_keys(value: int):
-	print('set max keys %s' %value)
 	max_keys = value
 	for child in $HBoxContainer.get_children():
 		child.queue_free()
