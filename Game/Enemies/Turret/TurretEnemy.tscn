@@ -11,12 +11,12 @@ radius = 11.5
 [sub_resource type="CircleShape2D" id=2]
 radius = 18.9769
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 200.0
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 315, 230 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "attack"
-length = 0.5
+length = 0.75
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:rotation_degrees")
@@ -25,10 +25,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 359.0, 180.0, 0.0 ]
+"values": [ 359.0, 180.0, 0.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -75,7 +75,6 @@ shape = SubResource( 1 )
 wait_time = 1.0
 
 [node name="Sprite" type="Sprite" parent="." index="3"]
-rotation = 6.26573
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 region_enabled = true
@@ -86,11 +85,10 @@ position = Vector2( 1.59128, 4.14844 )
 shape = SubResource( 2 )
 
 [node name="AggroArea" type="Area2D" parent="." index="5"]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 7 )
 
 [node name="FirePosition" type="Position2D" parent="." index="6"]
 position = Vector2( -16.6591, 0 )

@@ -4,15 +4,24 @@
 [ext_resource path="res://Assets/basic-platformer-tileset-scaled.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.4672, 2.39996 )
+extents = Vector2( 20.0365, 2.95204 )
 
 [node name="Spike" instance=ExtResource( 1 )]
 collision_layer = 2
+damage_to_player = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )
 
 [node name="basic-platformer-tileset-scaled" type="Sprite" parent="." index="1"]
+position = Vector2( -10, 0 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 560, 268, 80, 102 )
+
+[node name="basic-platformer-tileset-scaled2" type="Sprite" parent="." index="2"]
+position = Vector2( 10, 0 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 region_enabled = true

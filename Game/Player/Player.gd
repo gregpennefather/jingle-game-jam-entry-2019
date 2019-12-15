@@ -32,10 +32,11 @@ static func _on_Player_moved(player: Player, direction: Vector2) -> void:
 static func _on_Player_attacked(player: Player) -> void:
 	player.body.play_attack_animation()
 
-static func _on_Player_hit(player: Player) -> void:
+static func _on_Player_hit(player: Player, damage := 1) -> void:
 	if player.state_machine._state_name != "Die":
 		player.body.play_hit_animation()
-		player.health.take_damage(1)
+		print(damage)
+		player.health.take_damage(damage)
 
 static func _on_Player_died(player: Player) -> void:
 	player.state_machine.transition_to("Die")

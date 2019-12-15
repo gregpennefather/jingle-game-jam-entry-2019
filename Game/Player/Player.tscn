@@ -71,9 +71,6 @@ initial_state = NodePath("Move/Idle")
 
 [node name="Move" parent="StateMachine" instance=ExtResource( 3 )]
 script = ExtResource( 4 )
-max_speed_default = Vector2( 225, 400 )
-acceleration_default = Vector2( 500, 1200 )
-max_jump_speed = 600
 
 [node name="Idle" parent="StateMachine/Move" instance=ExtResource( 3 )]
 script = ExtResource( 9 )
@@ -84,8 +81,9 @@ script = ExtResource( 5 )
 [node name="Air" parent="StateMachine/Move" instance=ExtResource( 3 )]
 script = ExtResource( 6 )
 acceleration_x = 400.0
-fall_acceleration = 850.0
+fall_acceleration = 800.0
 extended_jump_impulse_factor = 0.6
+jump_impulse = 385.0
 item_reference_path = NodePath("../../../Items/Wings")
 
 [node name="JumpDuration" type="Timer" parent="StateMachine/Move/Air"]

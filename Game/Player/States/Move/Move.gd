@@ -1,7 +1,7 @@
 extends State
 
-export var max_speed_default := Vector2(300.0, 500.0)
-export var acceleration_default := Vector2(1000.0, 1000.0)
+export var max_speed_default := Vector2(225.0, 600.0)
+export var acceleration_default := Vector2(500.0, 1200.0)
 export var max_jump_speed := 800
 export var max_fall_speed := 400
 

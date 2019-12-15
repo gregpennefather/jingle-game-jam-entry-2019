@@ -4,6 +4,7 @@ const FLOOR_NORMAL := Vector2.UP
 
 var velocity := Vector2()
 var gravity := 5000
+export (int) var damage_to_player = 1
 
 var alive: bool = true
 
@@ -33,7 +34,7 @@ static func _on_hit_by_player(enemy) -> void:
 func _on_CollisionArea_body_entered(body):
 	if body.has_method('_on_Player_hit') and alive:
 		print('collision')
-		Events.emit_signal("player_hit", body)
+		Events.emit_signal("player_hit", body, damage_to_player)
 
 func _on_DespawnTimer_timeout():
 	call_deferred("queue_free")

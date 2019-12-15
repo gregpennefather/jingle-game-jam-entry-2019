@@ -3,7 +3,7 @@
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9.80629, 11.8122 )
+extents = Vector2( 8.82279, 15.0224 )
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 4

@@ -3,7 +3,7 @@ extends State
 export var acceleration_x: = 5000.0
 export var fall_acceleration = 200.0
 export var extended_jump_impulse_factor := 0.75
-export var jump_impulse := 350.0
+export var jump_impulse := 375.0
 export var air_jump_impulse := 300.0
 
 var jump_active: bool = false
